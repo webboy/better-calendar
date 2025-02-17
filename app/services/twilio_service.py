@@ -1,13 +1,15 @@
 from twilio.rest import Client
+import os
 
 
 class TwilioService:
     def __init__(self):
-        self.account_sid = "AC19d45fb931ecd5fd0a686e635796e508"
-        self.auth_token = "9921bca9e615ac5ee449f73b8503e6c8"
+        self.account_sid = os.environ['TWILIO_ACCOUNT_SID']
+        self.auth_token = os.environ['TWILIO_AUTH_TOKEN']
+        self.sender_number = os.environ['TWILIO_PHONE_NUMBER']
         self.client = Client(self.account_sid, self.auth_token)
 
     def send(self, to, message):
-        message = self.client.messages.create(to=to, from_="whatsapp:+14155238886", body=message)
+        message = self.client.messages.create(to=to, from_=self.sender_number, body=message)
 
         return message
