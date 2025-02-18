@@ -1,6 +1,6 @@
 from typing import List, Dict, Any
 import json
-from datetime import datetime
+from datetime import datetime, timedelta
 
 
 class EventService:
@@ -16,12 +16,27 @@ class EventService:
         except (FileNotFoundError, json.JSONDecodeError):
             return {}
 
-    def list_events(self) -> List[str]:
-        """Returns a list of event descriptions."""
-        if self.events:
-            return [event_data['description'] for event_data in self.events.values()]
-        else:
+    def list_events(self, time_frame: str = 'all') -> List[str]:
+        """Returns a list of event descriptions within the specified time frame."""
+        if not self.events:
             raise ValueError("You have no upcoming events")
+
+        now = datetime.now()
+        if time_frame == 'day':
+            end_time = now + timedelta(days=1)
+        elif time_frame == 'week':
+            end_time = now + timedelta(weeks=1)
+        elif time_frame == 'month':
+            end_time = now + timedelta(weeks=4)  # Approximation of a month
+        else:
+            return [event_data['description'] for event_data in self.events.values()]
+
+        filtered_events = [
+            event_data['description'] for event_data in self.events.values()
+            if now <= datetime.strptime(event_data['date'], '%d-%m-%Y') <= end_time
+        ]
+
+        return filtered_events
 
     def update_db(self) -> None:
         """Updates the JSON file with the current events."""
@@ -82,9 +97,9 @@ class EventService:
         self.events[name]['month_name'] = valid_date.strftime('%B')
 
 
-
-#Small tests
-es = EventService()
-# print(es.list_events())
-es.add_events('nem', 'zoom', "Joud and kehalit", "10-10-2010", "10:10:10", ['Joud', "kehalit"])
-es.update_event("Joud and kehalit", date="11-11-2011", time="11:11:11")
+if __name__ == "__main__":
+    es = EventService()
+    print(es.list_events())
+    # print(es.list_events(time_frame='week'))
+    es.add_events('nem', 'zoom', "Joud and kehalit", "10-10-2010", "10:10:10", ['Joud', "kehalit"])
+    es.update_event("Joud and kehalit", date="11-11-2011", time="11:11:11")
