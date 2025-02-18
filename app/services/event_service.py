@@ -66,15 +66,14 @@ class EventService:
 
         for existing_start_timestamp in map(float, self.events.keys()):
             existing_event = self.events[str(existing_start_timestamp)]
-            existing_event_start = datetime.strptime(
-                f"{existing_event['date']} {existing_event['time']}", '%d-%m-%Y %H:%M:%S'
-            ).timestamp()
+
+            existing_event_start = existing_start_timestamp
             existing_event_duration = existing_event.get('duration', 1)
             existing_event_end = existing_event_start + (existing_event_duration * 3600)
 
             if (event_start_timestamp < existing_event_end) and (event_end_timestamp > existing_event_start):
-                raise ValueError(f"Time Conflict: {existing_event['name']} is on {existing_event['date']} at {existing_event['time']}")
-
+                raise ValueError(
+                    f"Time Conflict: {existing_event['name']} is on {existing_event['date']} at {existing_event['time']} till {existing_event['end_time']}")
 
         event_data = {
             'name': event_name,
@@ -138,3 +137,6 @@ class EventService:
         self.events[timestamp]['month_name'] = valid_date.strftime('%B')
 
 
+
+es = EventService()
+es.add_events("nem", "Zoom", "Morning Session", "19-02-2025", "12:11:10", ['Joud', "Kehalit"], 1)
