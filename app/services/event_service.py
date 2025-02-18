@@ -59,6 +59,21 @@ class EventService:
 
 
 
+    def remove_event(self, event_name):
+
+        try:
+            del self.events[event_name]
+            with open('events.json', 'w') as file:
+                json.dump(self.events, file, indent=4)
+        except KeyError:
+            raise "Event not found"
+
+
+
+
+
+
+
 
 
 
@@ -69,4 +84,6 @@ class EventService:
 es = EventService()
 
 #print(es.list_events())
-es.add_events('nem', 'zoom', "added_event", "10-10-2010", "10:10:10", ['Joud', "kehalit"])
+es.add_events('nem', 'zoom', "add_event", "10-10-2010", "10:10:10", ['Joud', "kehalit"])
+
+
