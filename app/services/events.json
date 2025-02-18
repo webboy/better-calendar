@@ -1,28 +1,45 @@
 {
-  "Meeting_ID 01":
-{
-  "name": "Morning session",
-  "Host": "Kehalit",
-  "Location": "meets.google.com",
-  "Attenders": ["Joud", "Nemanja", "Nika"],
-  "Date": "10.10.2010",
-  "Day Name": "Monday",
-  "Weekday": "True",
-  "Abbreviated month name": "Oct",
-  "Time": "12 PM",
-  "Description": "Morning Session on 10.10.2010 at 12 PM"
-
-},
-
-
-    "Meeting_ID 02":
-{
-  "name": "Morning session",
-  "Host": "Kehalit",
-  "Location": "meets.google.com",
-  "Attenders": ["Joud", "Nemanja", "Nika"],
-  "Time": "12 PM 10.10.2010",
-  "Description": "Morning Session on 10.10.2010 at 12 PM"
-
-}
+    "Meeting_ID 01": {
+        "name": "Morning session",
+        "host": "Kehalit",
+        "location": "meets.google.com",
+        "attenders": [
+            "Joud",
+            "Nemanja",
+            "Nika"
+        ],
+        "date": "10.10.2010",
+        "day_name": "Monday",
+        "is_weekday": "True",
+        "month_name": "Oct",
+        "time": "12 PM",
+        "description": "Morning Session on 10.10.2010 at 12 PM"
+    },
+    "Meeting_ID 02": {
+        "name": "Morning session",
+        "Host": "Kehalit",
+        "Location": "meets.google.com",
+        "Attenders": [
+            "Joud",
+            "Nemanja",
+            "Nika"
+        ],
+        "Time": "12 PM 10.10.2010",
+        "description": "Morning Session on 10.10.2010 at 12 PM"
+    },
+    "added_event": {
+        "name": "added_event",
+        "host": "nem",
+        "location": "zoom",
+        "date": "10-10-2010",
+        "time": "10:10:10",
+        "day_name": "Sunday",
+        "is_weekday": false,
+        "month_name": "October",
+        "guests": [
+            "Joud",
+            "kehalit"
+        ],
+        "description": "added_event on 10-10-2010 at 10:10:10"
+    }
 }
