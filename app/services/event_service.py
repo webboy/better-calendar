@@ -27,7 +27,7 @@ class EventService:
         elif time_frame == 'week':
             end_time = now + timedelta(weeks=1)
         elif time_frame == 'month':
-            end_time = now + timedelta(weeks=4)  # Approximation of a month
+            end_time = now + timedelta(weeks=4)
         else:
             return [self.format_event_description(event_data, 'all') for event_data in self.events.values()]
 
@@ -106,11 +106,3 @@ class EventService:
         self.events[name]['is_weekday'] = valid_date.weekday() < 5
         self.events[name]['month_name'] = valid_date.strftime('%B')
 
-
-if __name__ == "__main__":
-    es = EventService()
-    print(es.list_events())
-    es.add_events('nem', 'zoom', "Joud and kehalit", "19-02-2025", "10:10:10", ['Joud', "kehalit"])
-    print(es.list_events('month'))
-    print(es.list_events('week'))
-    es.update_event("Joud and kehalit", date="11-11-2011", time="11:11:11")
