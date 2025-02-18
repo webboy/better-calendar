@@ -1,17 +1,70 @@
 {
-    "Joud and kehalit": {
-        "name": "Joud and kehalit",
+    "1740466810.0": {
+        "name": "morning session",
+        "host": "nem",
+        "location": "zoom",
+        "date": "25-02-2025",
+        "time": "08:00:10",
+        "day_name": "Tuesday",
+        "is_weekday": true,
+        "month_name": "February",
+        "guests": [
+            "Joud",
+            "keh"
+        ],
+        "duration": 1,
+        "end_time": "09:00:10",
+        "description": "morning session on 25-02-2025 at 08:00:10 till 09:00:10"
+    },
+    "1740034810.0": {
+        "name": "morning session",
         "host": "nem",
         "location": "zoom",
         "date": "20-02-2025",
-        "time": "11:11:11",
+        "time": "08:00:10",
         "day_name": "Thursday",
         "is_weekday": true,
         "month_name": "February",
         "guests": [
             "Joud",
-            "kehalit"
+            "keh"
         ],
-        "description": "Joud and kehalit on 19-02-2025 at 10:10:10"
+        "duration": 1,
+        "end_time": "09:00:10",
+        "description": "morning session on 20-02-2025 at 08:00:10 till 09:00:10"
+    },
+    "1740121210.0": {
+        "name": "morning session",
+        "host": "nem",
+        "location": "zoom",
+        "date": "21-02-2025",
+        "time": "08:00:10",
+        "day_name": "Friday",
+        "is_weekday": true,
+        "month_name": "February",
+        "guests": [
+            "Joud",
+            "keh"
+        ],
+        "duration": 1,
+        "end_time": "09:00:10",
+        "description": "morning session on 21-02-2025 at 08:00:10 till 09:00:10"
+    },
+    "1740128410.0": {
+        "name": "morning session",
+        "host": "nem",
+        "location": "zoom",
+        "date": "21-02-2025",
+        "time": "10:00:10",
+        "day_name": "Friday",
+        "is_weekday": true,
+        "month_name": "February",
+        "guests": [
+            "Joud",
+            "keh"
+        ],
+        "duration": 1,
+        "end_time": "11:00:10",
+        "description": "morning session on 21-02-2025 at 10:00:10 till 11:00:10"
     }
 }
