@@ -2,6 +2,7 @@ from typing import Dict, List, Callable, Tuple
 import logging
 
 
+
 class Command:
     def __init__(self, name: str, handler: Callable, min_args: int, max_args: int, help_text: str):
         self.name = name
@@ -10,9 +11,8 @@ class Command:
         self.max_args = max_args
         self.help_text = help_text
 
-
 class RouterService:
-    def __init__(self):
+    def __init__(self, ):
         self.commands: Dict[str, Command] = {}
         self._register_commands()
 
@@ -24,22 +24,6 @@ class RouterService:
             min_args=0,
             max_args=0,
             help_text="Show available commands"
-        )
-
-        self.register_command(
-            "!register",
-            self._handle_register,
-            min_args=1,
-            max_args=1,
-            help_text="Register with email. Usage: !register <email>"
-        )
-
-        self.register_command(
-            "!validate",
-            self._handle_validate,
-            min_args=2,
-            max_args=2,
-            help_text="Validate registration. Usage: !validate <email> <code>"
         )
 
     def register_command(self, name: str, handler: Callable, min_args: int, max_args: int, help_text: str):
@@ -101,13 +85,3 @@ class RouterService:
                 response += f"{cmd_name} - {cmd.help_text}\n"
 
         return response
-
-    def _handle_register(self, args: List[str], wa_id: str, phone_number: str) -> str:
-        """Placeholder for register command - to be implemented"""
-        email = args[0]
-        return f"Registration command received for email: {email}"
-
-    def _handle_validate(self, args: List[str], wa_id: str, phone_number: str) -> str:
-        """Placeholder for validate command - to be implemented"""
-        email, code = args
-        return f"Validation command received for email: {email} with code: {code}"

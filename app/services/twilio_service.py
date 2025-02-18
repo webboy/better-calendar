@@ -1,7 +1,6 @@
 from twilio.rest import Client
 import os
 
-
 class TwilioService:
     def __init__(self):
         self.account_sid = os.getenv('TWILIO_ACCOUNT_SID')

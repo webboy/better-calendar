@@ -1,16 +1,22 @@
 from flask import Flask, request
 import logging
 from datetime import datetime
-from services.router_service import RouterService
-from services.twilio_service import TwilioService
+from app.services.router_service import RouterService
+from app.services.twilio_service import TwilioService
+from app.routes.routes import configure_routes
 
-router = RouterService()
+# services
 twilio = TwilioService()
-app = Flask(__name__)
+
+# Routing
+router = RouterService()
+router = configure_routes(router)
+
+app = Flask('Better Calendar')
 
 # Set up logging
 logging.basicConfig(
-    filename=f"..\\logs\\log-{datetime.now().strftime('%Y-%m-%d')}.log",
+    filename=f"logs\\log-{datetime.now().strftime('%Y-%m-%d')}.log",
     level=logging.INFO,
     format='%(asctime)s - %(message)s',
     datefmt='%Y-%m-%d %H:%M:%S'
@@ -29,15 +35,19 @@ def webhook():
     logging.info(f"Phone: {phone_number}")
 
     # Get response from the router
-    response = router.route(incoming_msg, wa_id, phone_number)
+    try:
+        response = router.route(incoming_msg, wa_id, phone_number)
 
-    # Log response
-    logging.info(f"Response: {response}")
+        # Logging
+        logging.info(f"Response: {response}")
 
-    # Send response string back to the user
-    twilio.send(phone_number, response)
+        # Send response string back to the user
+        twilio.send(phone_number, response)
 
-    return str(response)
+        return str(response)
+
+    except Exception as e:
+        twilio.send(phone_number, 'Error. Please try later.')
 
 
 if __name__ == '__main__':
