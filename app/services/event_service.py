@@ -5,18 +5,18 @@ from datetime import datetime, timedelta
 
 class EventService:
 
-    def __init__(self, file_path: str = 'events.json'):
+    def __init__(self, file_path='events.json'):
         self.file_path = file_path
         self.events = self.load_events()
 
-    def load_events(self) -> Dict[str, Any]:
+    def load_events(self):
         try:
             with open(self.file_path, 'r') as json_file:
                 return json.load(json_file)
         except (FileNotFoundError, json.JSONDecodeError):
             return {}
 
-    def list_events(self, time_frame: str = 'all') -> List[str]:
+    def list_events(self, time_frame: str = '') -> List[str]:
         """Returns a list of event descriptions within the specified time frame."""
         if not self.events:
             raise ValueError("You have no upcoming events")
@@ -29,21 +29,31 @@ class EventService:
         elif time_frame == 'month':
             end_time = now + timedelta(weeks=4)  # Approximation of a month
         else:
-            return [event_data['description'] for event_data in self.events.values()]
+            return [self.format_event_description(event_data, 'all') for event_data in self.events.values()]
 
         filtered_events = [
-            event_data['description'] for event_data in self.events.values()
+            self.format_event_description(event_data, time_frame)
+            for event_data in self.events.values()
             if now <= datetime.strptime(event_data['date'], '%d-%m-%Y') <= end_time
         ]
 
         return filtered_events
 
-    def update_db(self) -> None:
+    def format_event_description(self, event_data: Dict, time_frame: str) -> str:
+        """Formats event descriptions based on the time frame."""
+        if time_frame == 'week':
+            return f"{event_data['name']} on {event_data['day_name']} at {event_data['time']}"
+        elif time_frame == 'month' or time_frame == 'all':
+            return f"{event_data['name']} on {event_data['date']} at {event_data['time']}"
+        else:
+            return event_data['description']
+
+    def update_db(self) :
         """Updates the JSON file with the current events."""
         with open(self.file_path, 'w') as file:
             json.dump(self.events, file, indent=4)
 
-    def add_events(self, host: str, location: str, event_name: str, event_date: str, event_time: str, guests: List[str]) -> None:
+    def add_events(self, host: str, location: str, event_name: str, event_date: str, event_time: str, guests: List[str]):
         """Adds a new event to the events list."""
         try:
             valid_date_time = datetime.strptime(f'{event_date} {event_time}', '%d-%m-%Y %H:%M:%S')
@@ -66,7 +76,7 @@ class EventService:
         self.events[event_name] = event_data
         self.update_db()
 
-    def remove_event(self, event_name: str) -> None:
+    def remove_event(self, event_name: str):
         """Removes an event from the events list."""
         if event_name in self.events:
             del self.events[event_name]
@@ -74,7 +84,7 @@ class EventService:
         else:
             raise KeyError("Event not found")
 
-    def update_event(self, name: str, **kwargs: Any) -> None:
+    def update_event(self, name: str, **kwargs: Any):
         """Updates an existing event with the given parameters."""
         if name not in self.events:
             raise KeyError("Event not found")
@@ -89,7 +99,7 @@ class EventService:
 
         self.update_db()
 
-    def update_date_related_fields(self, name: str, date: str) -> None:
+    def update_date_related_fields(self, name: str, date: str):
         """Updates the date-related fields for an event."""
         valid_date = datetime.strptime(date, '%d-%m-%Y')
         self.events[name]['day_name'] = valid_date.strftime('%A')
@@ -100,6 +110,7 @@ class EventService:
 if __name__ == "__main__":
     es = EventService()
     print(es.list_events())
-    # print(es.list_events(time_frame='week'))
-    es.add_events('nem', 'zoom', "Joud and kehalit", "10-10-2010", "10:10:10", ['Joud', "kehalit"])
+    es.add_events('nem', 'zoom', "Joud and kehalit", "19-02-2025", "10:10:10", ['Joud', "kehalit"])
+    print(es.list_events('month'))
+    print(es.list_events('week'))
     es.update_event("Joud and kehalit", date="11-11-2011", time="11:11:11")
