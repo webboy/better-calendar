@@ -4,6 +4,7 @@ from app.controllers.auth_controller import AuthController
 from app.controllers.event_controller import EventController
 from app.controllers.reminder_controller import ReminderController
 from app.controllers.hello_controller import HelloController
+from app.controllers.status_controller import StatusController  # Correct import for StatusController
 
 
 def configure_routes(router: RouterService):
@@ -12,6 +13,7 @@ def configure_routes(router: RouterService):
     event_controller = EventController()
     reminder_controller = ReminderController()
     hello_controller = HelloController()
+    status_controller = StatusController()
 
     # Register authentication routes
     router.register_command(
@@ -52,6 +54,14 @@ def configure_routes(router: RouterService):
         min_args=0,
         max_args=0,
         help_text="Say hello!"
+    )
+    # Register the new status route
+    router.register_command(
+        "!status",
+        lambda username: status_controller.get_reminder(username),  # Use lambda to pass username
+        min_args=1,
+        max_args=1,
+        help_text="Check your reminder status. Usage: !status <username>"
     )
 
     return router
