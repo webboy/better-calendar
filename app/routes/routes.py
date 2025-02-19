@@ -3,12 +3,15 @@ from app.services.router_service import RouterService
 from app.controllers.auth_controller import AuthController
 from app.controllers.event_controller import EventController
 from app.controllers.reminder_controller import ReminderController
+from app.controllers.hello_controller import HelloController
+
 
 def configure_routes(router: RouterService):
     # Initialize controllers
     auth_controller = AuthController()
     event_controller = EventController()
     reminder_controller = ReminderController()
+    hello_controller = HelloController()
 
     # Register authentication routes
     router.register_command(
@@ -41,6 +44,14 @@ def configure_routes(router: RouterService):
         min_args=1,
         max_args=1,
         help_text="Set a reminder. Usage: !reminder <time>"
+    )
+
+    router.register_command(
+        "!hello",
+        HelloController.hello_command,
+        min_args=0,
+        max_args=0,
+        help_text="Say hello!"
     )
 
     return router

@@ -79,5 +79,14 @@
         "start_time": "10:00",
         "end_date": "23.02.2025",
         "end_time": "12:00"
+    },
+    {
+        "id": "1740301801",
+        "name": "Special Event",
+        "description": "My special event",
+        "start_date": "27.02.2025",
+        "start_time": "11:15",
+        "end_date": "27.02.2025",
+        "end_time": "12:00"
     }
 ]
