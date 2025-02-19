@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 from datetime import datetime
-from typing import Optional
+import re
 
 
 @dataclass
@@ -21,6 +21,21 @@ class Event:
         """Get the day name (Monday, Tuesday, etc.) from start_date"""
         date_obj = datetime.strptime(self.start_date, "%d.%m.%Y")
         return date_obj.strftime("%A")
+
+    @property
+    def clean_description(self) -> str:
+        """Returns the description with HTML tags removed"""
+        # Remove HTML tags
+        clean_text = re.sub(r'<[^>]+>', '', self.description)
+        # Replace HTML entities
+        clean_text = clean_text.replace('&nbsp;', ' ')
+        clean_text = clean_text.replace('&amp;', '&')
+        clean_text = clean_text.replace('&lt;', '<')
+        clean_text = clean_text.replace('&gt;', '>')
+        clean_text = clean_text.replace('&quot;', '"')
+        # Remove extra whitespace
+        clean_text = ' '.join(clean_text.split())
+        return clean_text
 
     def get_status(self) -> str:
         """Returns the current status of the event"""
@@ -65,6 +80,6 @@ class Event:
     def format_detailed(self) -> str:
         """Returns a detailed formatted string of the event with status"""
         return f"""{self.get_status()}: {self.name}
-📝 {self.description}
+📝 {self.clean_description}
 📆 {self.day_name}, {self.start_date}
 ⏰ {self.start_time} - {self.end_time}\n"""
