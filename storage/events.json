@@ -54,6 +54,15 @@
         "end_time": "14:30"
     },
     {
+        "id": "jraliuqjhtckd4jb55e16odpdc",
+        "name": "iDesign Labs and Nemanja Milenkovic",
+        "description": "Event Name: Test Meeting\n\nLocation: Am Bahnhof Tierpark 30\n\nNeed to make changes to this event?\nCancel: https://calendly.com/cancellations/44ffb8e2-689a-434a-aef5-75085eb9d169\nReschedule: https://calendly.com/reschedulings/44ffb8e2-689a-434a-aef5-75085eb9d169\n\nPowered by Calendly.com\n",
+        "start_date": "20.02.2025",
+        "start_time": "17:30",
+        "end_date": "20.02.2025",
+        "end_time": "17:45"
+    },
+    {
         "id": "1740129000",
         "name": "Object-Oriented Programming",
         "description": "Classes, Objects, Inheritance, and Polymorphism",
@@ -70,6 +79,15 @@
         "start_time": "13:00",
         "end_date": "21.02.2025",
         "end_time": "14:30"
+    },
+    {
+        "id": "68iph18g119jfuuiks1qveir7k",
+        "name": "Some random Friday event",
+        "description": "No description provided",
+        "start_date": "21.02.2025",
+        "start_time": "16:00",
+        "end_date": "21.02.2025",
+        "end_time": "17:00"
     },
     {
         "id": "1740215400",
@@ -108,6 +126,15 @@
         "end_time": "14:00"
     },
     {
+        "id": "24vljn1ja8i1ohr5oo07qvivdp_20250225T150000Z",
+        "name": "1:1 - Nemanja",
+        "description": "Open the\u00a0<a href=\"https://app.masterschool.com/campus/calendar\" target=\"_blank\"><u><u>MS calendar</u></u></a>\u00a0and select the link from our today's meeting",
+        "start_date": "25.02.2025",
+        "start_time": "16:00",
+        "end_date": "25.02.2025",
+        "end_time": "16:30"
+    },
+    {
         "id": "1740647400",
         "name": "Web Development with Flask",
         "description": "Building Web Applications with Flask Framework",
@@ -135,6 +162,15 @@
         "end_time": "11:00"
     },
     {
+        "id": "24vljn1ja8i1ohr5oo07qvivdp_20250304T150000Z",
+        "name": "1:1 - Nemanja",
+        "description": "Open the\u00a0<a href=\"https://app.masterschool.com/campus/calendar\" target=\"_blank\"><u><u>MS calendar</u></u></a>\u00a0and select the link from our today's meeting",
+        "start_date": "04.03.2025",
+        "start_time": "16:00",
+        "end_date": "04.03.2025",
+        "end_time": "16:30"
+    },
+    {
         "id": "1741252200",
         "name": "API Development",
         "description": "RESTful API Design and Implementation",
@@ -153,6 +189,15 @@
         "end_time": "11:00"
     },
     {
+        "id": "24vljn1ja8i1ohr5oo07qvivdp_20250311T150000Z",
+        "name": "1:1 - Nemanja",
+        "description": "Open the\u00a0<a href=\"https://app.masterschool.com/campus/calendar\" target=\"_blank\"><u><u>MS calendar</u></u></a>\u00a0and select the link from our today's meeting",
+        "start_date": "11.03.2025",
+        "start_time": "16:00",
+        "end_date": "11.03.2025",
+        "end_time": "16:30"
+    },
+    {
         "id": "1742116200",
         "name": "Testing in Python",
         "description": "Unit Testing, Integration Testing, and Test-Driven Development",
@@ -160,6 +205,15 @@
         "start_time": "13:00",
         "end_date": "16.03.2025",
         "end_time": "14:30"
+    },
+    {
+        "id": "24vljn1ja8i1ohr5oo07qvivdp_20250318T150000Z",
+        "name": "1:1 - Nemanja",
+        "description": "Open the\u00a0<a href=\"https://app.masterschool.com/campus/calendar\" target=\"_blank\"><u><u>MS calendar</u></u></a>\u00a0and select the link from our today's meeting",
+        "start_date": "18.03.2025",
+        "start_time": "16:00",
+        "end_date": "18.03.2025",
+        "end_time": "16:30"
     },
     {
         "id": "1742721000",
