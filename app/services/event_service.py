@@ -135,8 +135,3 @@ class EventService:
         self.events[timestamp]['day_name'] = valid_date.strftime('%A')
         self.events[timestamp]['is_weekday'] = valid_date.weekday() < 5
         self.events[timestamp]['month_name'] = valid_date.strftime('%B')
-
-
-
-es = EventService()
-es.add_events("nem", "Zoom", "Morning Session", "19-02-2025", "12:11:10", ['Joud', "Kehalit"], 1)
