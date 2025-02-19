@@ -18,6 +18,15 @@
         "end_time": "14:30"
     },
     {
+        "id": "1739967001",
+        "name": "Evening session",
+        "description": "Long lasting evening event",
+        "start_date": "19.02.2025",
+        "start_time": "19:00",
+        "end_date": "19.02.2025",
+        "end_time": "23:30"
+    },
+    {
         "id": "1740042600",
         "name": "Functions & Methods",
         "description": "Writing Functions, Parameters, Return Values, and Scope",
@@ -81,12 +90,84 @@
         "end_time": "12:00"
     },
     {
-        "id": "1740301801",
-        "name": "Special Event",
-        "description": "My special event",
+        "id": "1740398400",
+        "name": "1:1 Mentor Meeting - Career Goals",
+        "description": "Personal mentoring session with Sarah to discuss career path and goals",
+        "start_date": "24.02.2025",
+        "start_time": "13:00",
+        "end_date": "24.02.2025",
+        "end_time": "14:00"
+    },
+    {
+        "id": "1740647400",
+        "name": "Web Development with Flask",
+        "description": "Building Web Applications with Flask Framework",
         "start_date": "27.02.2025",
-        "start_time": "11:15",
+        "start_time": "10:00",
         "end_date": "27.02.2025",
+        "end_time": "11:30"
+    },
+    {
+        "id": "1740658200",
+        "name": "Database Integration",
+        "description": "Working with SQLite and PostgreSQL in Python",
+        "start_date": "27.02.2025",
+        "start_time": "13:00",
+        "end_date": "27.02.2025",
+        "end_time": "14:30"
+    },
+    {
+        "id": "1740733800",
+        "name": "1:1 Code Review",
+        "description": "Personal code review session with Michael",
+        "start_date": "28.02.2025",
+        "start_time": "10:00",
+        "end_date": "28.02.2025",
+        "end_time": "11:00"
+    },
+    {
+        "id": "1741252200",
+        "name": "API Development",
+        "description": "RESTful API Design and Implementation",
+        "start_date": "06.03.2025",
+        "start_time": "10:00",
+        "end_date": "06.03.2025",
+        "end_time": "11:30"
+    },
+    {
+        "id": "1741338600",
+        "name": "1:1 Project Planning",
+        "description": "Project planning and architecture discussion with Lisa",
+        "start_date": "07.03.2025",
+        "start_time": "10:00",
+        "end_date": "07.03.2025",
+        "end_time": "11:00"
+    },
+    {
+        "id": "1742116200",
+        "name": "Testing in Python",
+        "description": "Unit Testing, Integration Testing, and Test-Driven Development",
+        "start_date": "16.03.2025",
+        "start_time": "13:00",
+        "end_date": "16.03.2025",
+        "end_time": "14:30"
+    },
+    {
+        "id": "1742721000",
+        "name": "1:1 Career Strategy",
+        "description": "Career development and job search strategy with David",
+        "start_date": "23.03.2025",
+        "start_time": "14:00",
+        "end_date": "23.03.2025",
+        "end_time": "15:00"
+    },
+    {
+        "id": "1743239400",
+        "name": "Advanced Project Workshop",
+        "description": "Working on Complex Python Projects and System Design",
+        "start_date": "29.03.2025",
+        "start_time": "10:00",
+        "end_date": "29.03.2025",
         "end_time": "12:00"
     }
 ]

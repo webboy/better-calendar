@@ -1,9 +1,27 @@
-from typing import List
+from typing import List, Dict, Set
 from app.services.user_service import UserService
 from app.services.event_service import EventService
 
-
 class EventController:
+    TIMEFRAME_HEADERS: Dict[str, str] = {
+        'today': "📅 Today's Events",
+        'tomorrow': "📅 Tomorrow's Events",
+        'this-week': "📅 This Week's Events",
+        'next-week': "📅 Next Week's Events",
+        'this-month': "📅 This Month's Events",
+        'next-month': "📅 Next Month's Events"
+    }
+
+    VALID_TIMEFRAMES: Set[str] = set(TIMEFRAME_HEADERS.keys())
+
+    HELP_TEXT = """
+Available timeframes:
+!events today   - Today's events (default)
+!events tomorrow - Tomorrow's events
+!events this-week - Current week's events
+!events next-week - Next week's events
+!events this-month - Current month's events
+!events next-month - Next month's events"""
 
     def __init__(self):
         self.user_service = UserService()
@@ -15,7 +33,12 @@ class EventController:
         user = self.user_service.get_user_by_wa_id(wa_id)
 
         # Parse timeframe argument if provided
-        time_frame = args[0] if args else 'day'  # default to today's events
+        time_frame = args[0] if args else 'today'  # default to today's events
+
+        # Validate timeframe parameter
+        if time_frame not in self.VALID_TIMEFRAMES:
+            return f"""❌ Invalid timeframe: {time_frame}
+{self.HELP_TEXT}"""
 
         try:
             events = self.event_service.list_events(time_frame)
@@ -23,35 +46,17 @@ class EventController:
             if not events:
                 return f"""📅 No Events Found
 No events scheduled for the selected time frame.
+{self.HELP_TEXT}"""
 
-Try:
-!events day   - Today's events
-!events week  - This week's events
-!events month - This month's events
-!events all   - All upcoming events"""
-
-            # Create header based on timeframe
-            headers = {
-                'day': "📅 Today's Events",
-                'week': "📅 This Week's Events",
-                'month': "📅 This Month's Events",
-                'all': "📅 All Upcoming Events"
-            }
-
-            response = f"{headers.get(time_frame, '📅 Events')}\n"
+            # Build response with header and events
+            response = f"{self.TIMEFRAME_HEADERS.get(time_frame)}\n"
 
             # Add events with emojis and formatting
             for i, event in enumerate(events, 1):
-                response += f"\n{i}. {event}"
+                response += f"\n{i}. {event.format_detailed()}"
 
-            # Add footer with command help
-            response += f"""
-
-Available timeframes:
-!events day   - Today's events
-!events week  - This week's events
-!events month - This month's events
-!events all   - All upcoming events"""
+            # Add help text footer
+            response += f"\n{self.HELP_TEXT}"
 
             return response
 
@@ -59,9 +64,4 @@ Available timeframes:
             return f"""📅 No Events Found
 
 {str(e)}
-
-Available commands:
-!events day   - Today's events
-!events week  - This week's events
-!events month - This month's events
-!events all   - All upcoming events"""
+{self.HELP_TEXT}"""

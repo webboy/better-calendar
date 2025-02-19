@@ -2,6 +2,7 @@ from dataclasses import dataclass
 from datetime import datetime
 from typing import Optional
 
+
 @dataclass
 class Event:
     id: str
@@ -20,6 +21,21 @@ class Event:
         """Get the day name (Monday, Tuesday, etc.) from start_date"""
         date_obj = datetime.strptime(self.start_date, "%d.%m.%Y")
         return date_obj.strftime("%A")
+
+    def get_status(self) -> str:
+        """Returns the current status of the event"""
+        now = datetime.now()
+
+        # Convert event times to datetime objects
+        start_datetime = datetime.strptime(f"{self.start_date} {self.start_time}", "%d.%m.%Y %H:%M")
+        end_datetime = datetime.strptime(f"{self.end_date} {self.end_time}", "%d.%m.%Y %H:%M")
+
+        if now < start_datetime:
+            return "🔜 Upcoming"
+        elif start_datetime <= now <= end_datetime:
+            return "▶️ Ongoing"
+        else:
+            return "✅ Finished"
 
     @classmethod
     def from_dict(cls, data: dict) -> 'Event':
@@ -47,8 +63,8 @@ class Event:
         }
 
     def format_detailed(self) -> str:
-        """Returns a detailed formatted string of the event"""
-        return f"""📅 {self.name}
+        """Returns a detailed formatted string of the event with status"""
+        return f"""{self.get_status()}: {self.name}
 📝 {self.description}
 📆 {self.day_name}, {self.start_date}
-⏰ {self.start_time} - {self.end_time}"""
+⏰ {self.start_time} - {self.end_time}\n"""
