@@ -27,6 +27,15 @@
         "end_time": "23:30"
     },
     {
+        "id": "049415b6-53e7-425b-b8e2-9cab31804d11",
+        "name": "30 Minute Meeting",
+        "description": "No description provided",
+        "start_date": "20.02.2025",
+        "start_time": "09:00",
+        "end_date": "20.02.2025",
+        "end_time": "09:30"
+    },
+    {
         "id": "1740042600",
         "name": "Functions & Methods",
         "description": "Writing Functions, Parameters, Return Values, and Scope",
