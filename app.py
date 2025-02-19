@@ -48,7 +48,7 @@ def webhook():
         return str(response)
 
     except Exception as e:
-        twilio.send(phone_number, str(e))
+        twilio.send(phone_number, f"""🚨 Uhh Ohh, looks like there was an error: {str(e)} """)
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -40,6 +40,7 @@ class UserService:
 
     def get_user_by_wa_id(self, wa_id: str) -> Optional[User]:
         """Returns the user with the given WhatsApp ID or None."""
+        self.load_users_from_json()
         for user in self.users.values():
             if user.wa_id == wa_id:
                 return user

@@ -1,18 +1,15 @@
 from typing import Dict, List, Callable, Tuple
 import logging
 
-class Command:
-    def __init__(self, name: str, handler: Callable, min_args: int, max_args: int, help_text: str):
-        self.name = name
-        self.handler = handler
-        self.min_args = min_args
-        self.max_args = max_args
-        self.help_text = help_text
+from app.models.command import Command
+from app.services.user_service import UserService
 
 class RouterService:
-    def __init__(self, ):
+    def __init__(self):
         self.commands: Dict[str, Command] = {}
         self._register_commands()
+        self.public_commands = ["!help", "!register", "!validate"]
+        self.user_service = UserService()
 
     def _register_commands(self):
         """Register all available commands"""
@@ -47,15 +44,40 @@ class RouterService:
 
         # If no command or unrecognized command, show help
         if not command or command not in self.commands:
-            return self._handle_help([], wa_id, phone_number)
+            return f"""❓ Unknown Command
+
+{self._handle_help([], wa_id, phone_number)}"""
 
         cmd = self.commands[command]
 
         # Validate number of arguments
         if len(args) < cmd.min_args:
-            return f"Too few arguments for {command}. {cmd.help_text}"
+            return f"""⚠️ Missing Information
+
+The command {command} requires more information.
+{cmd.help_text}
+
+Type !help for more details."""
+
         if len(args) > cmd.max_args:
-            return f"Too many arguments for {command}. {cmd.help_text}"
+            return f"""⚠️ Too Much Information
+
+The command {command} was given too many arguments.
+{cmd.help_text}
+
+Type !help for more details."""
+
+        # Check if the command requires registration
+        user = self.user_service.get_user_by_wa_id(wa_id)
+        if command not in self.public_commands and user is None:
+            return f"""🔒 Registration Required
+
+This command is only available for registered users.
+
+To register:
+1. Use !register <your-email>
+2. Check your email for the verification code
+3. Use !validate <your-email> <code>"""
 
         # Execute the command
         try:
@@ -66,20 +88,31 @@ class RouterService:
 
     def _handle_help(self, args: List[str], wa_id: str, phone_number: str) -> str:
         """Handle !help command"""
-        response = "Available commands:\n\n"
+        # Check if user is registered to show appropriate help
+        user = self.user_service.get_user_by_wa_id(wa_id) if wa_id else None
 
-        # Group commands by whether they require registration
-        public_commands = ["!help", "!register", "!validate"]
+        response = """📱 Better Calendar Commands
 
-        response += "Public commands:\n"
-        for cmd_name in public_commands:
+"""
+        # Public commands first
+        response += """🌐 Public Commands:
+"""
+        for cmd_name in self.public_commands:
             if cmd_name in self.commands:
                 cmd = self.commands[cmd_name]
                 response += f"{cmd_name} - {cmd.help_text}\n"
 
-        response += "\nCommands requiring registration:\n"
-        for cmd_name, cmd in self.commands.items():
-            if cmd_name not in public_commands:
-                response += f"{cmd_name} - {cmd.help_text}\n"
+        # Only show registered commands if user is registered
+        if user:
+            response += """
+🔐 User Commands:
+"""
+            for cmd_name, cmd in self.commands.items():
+                if cmd_name not in self.public_commands:
+                    response += f"{cmd_name} - {cmd.help_text}\n"
+        else:
+            response += """
+ℹ️ More commands will be available after registration.
+Use !register <your-email> to get started."""
 
         return response
