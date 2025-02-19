@@ -1,0 +1,20 @@
+[
+    {
+        "email": "extramedia.nemanja@gmail.com",
+        "first_name": "Nemanja",
+        "last_name": "Milenkovic",
+        "phone_number": "whatsapp:+491724184069",
+        "wa_id": "491724184069",
+        "reminder": null,
+        "validation_code": "451142"
+    },
+    {
+        "email": "another@example.com",
+        "first_name": "Jane",
+        "last_name": "Smith",
+        "phone_number": null,
+        "wa_id": null,
+        "reminder": null,
+        "validation_code": null
+    }
+]

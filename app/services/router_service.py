@@ -1,8 +1,6 @@
 from typing import Dict, List, Callable, Tuple
 import logging
 
-
-
 class Command:
     def __init__(self, name: str, handler: Callable, min_args: int, max_args: int, help_text: str):
         self.name = name
@@ -64,7 +62,7 @@ class RouterService:
             return cmd.handler(args, wa_id, phone_number)
         except Exception as e:
             logging.error(f"Error executing command {command}: {str(e)}")
-            return f"Error executing command. Please try again."
+            return str(e)
 
     def _handle_help(self, args: List[str], wa_id: str, phone_number: str) -> str:
         """Handle !help command"""

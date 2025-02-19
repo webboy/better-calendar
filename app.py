@@ -34,7 +34,8 @@ def webhook():
     logging.info(f"WA ID: {wa_id}")
     logging.info(f"Phone: {phone_number}")
 
-    # Get response from the router
+
+# Get response from the router
     try:
         response = router.route(incoming_msg, wa_id, phone_number)
 
@@ -47,8 +48,7 @@ def webhook():
         return str(response)
 
     except Exception as e:
-        twilio.send(phone_number, 'Error. Please try later.')
-
+        twilio.send(phone_number, str(e))
 
 if __name__ == '__main__':
     app.run(debug=True)
