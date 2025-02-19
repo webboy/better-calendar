@@ -15,8 +15,8 @@ class AuthController:
         # Validate email
         if not self.validation_service.validate_email(email):
             return f"""❌ Invalid Email Format
-                    Please provide a valid email address.
-                    Example: student@masterschool.com"""
+Please provide a valid email address.
+Example: student@masterschool.com"""
 
         # Check if the email is in the user list
         user = self.user_service.get_user_by_email(email)
@@ -30,13 +30,13 @@ class AuthController:
         # Send the code to the user via email
         return f"""👋 Hello {user.first_name}!
 
-                📧 We've sent a verification code to:
-                   {email}
-                
-                🔐 Your code: {code}
-                
-                To complete registration, use:
-                !validate {email} {code}"""
+📧 We've sent a verification code to:
+   {email}
+
+🔐 Your code: {code}
+
+To complete registration, use:
+!validate {email} {code}"""
 
     def validate(self, args: List[str], wa_id: str, phone_number: str) -> str:
         email = args[0]
@@ -45,8 +45,8 @@ class AuthController:
         # Validate email
         if not self.validation_service.validate_email(email):
             return f"""❌ Invalid Email Format
-                    Please provide a valid email address.
-                    Example: student@masterschool.com"""
+Please provide a valid email address.
+Example: student@masterschool.com"""
 
         # Check if the email is in the user list
         user = self.user_service.get_user_by_email(email)
@@ -55,18 +55,18 @@ class AuthController:
         if user.validation_code != code:
             return f"""❌ Invalid Verification Code
 
-                    The code you provided doesn't match our records.
-                    Please check the code and try again.
-                    
-                    Email: {email}
-                    Provided Code: {code}"""
+The code you provided doesn't match our records.
+Please check the code and try again.
+
+Email: {email}
+Provided Code: {code}"""
 
         # Save the wa_id and phone_number to the DB against the email
         self.user_service.link_whatsapp(email, wa_id, phone_number)
 
         return f"""✅ Registration Complete!
 
-                Welcome {user.first_name}! Your WhatsApp number has been successfully linked to your account.
-                
-                You can now use all available commands.
-                Send !help to see what you can do."""
+Welcome {user.first_name}! Your WhatsApp number has been successfully linked to your account.
+
+You can now use all available commands.
+Send !help to see what you can do."""

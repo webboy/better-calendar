@@ -4,9 +4,9 @@ from typing import List, Optional, Dict
 from app.models.user import User
 
 class UserService:
-    def __init__(self):
+    def __init__(self, file_path = 'storage/users.json'):
         """Initializes the UserService with users from a JSON file."""
-        self.json_file = 'storage/users.json'
+        self.json_file = file_path
         self.users: Dict[str, User] = {}  # email -> User mapping
         self.load_users_from_json()
 
@@ -81,3 +81,10 @@ class UserService:
         """Verifies if the provided code matches the stored validation code."""
         user = self.get_user_by_email(email)
         return user.validation_code == code
+
+    def update_reminder(self, email: str, reminder_time: int) -> None:
+        """Updates the reminder time for a user"""
+        self.load_users_from_json()
+        user = self.get_user_by_email(email)
+        self.users[email].reminder = reminder_time
+        self.save_users()

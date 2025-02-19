@@ -22,33 +22,43 @@ logging.basicConfig(
     datefmt='%Y-%m-%d %H:%M:%S'
 )
 
+
 @app.route('/webhook', methods=['POST'])
 def webhook():
     # Get message details
     incoming_msg = request.values.get('Body', '')
     wa_id = request.values.get('WaId', '')
     phone_number = request.values.get('From', '')
+    use_twilio = request.values.get('use_twilio', 'true').lower() == 'true'
 
-    # Log specific message details
+    # Log request details
     logging.info(f"Message: {incoming_msg}")
     logging.info(f"WA ID: {wa_id}")
     logging.info(f"Phone: {phone_number}")
+    logging.info(f"Using Twilio: {use_twilio}")
 
-
-# Get response from the router
     try:
         response = router.route(incoming_msg, wa_id, phone_number)
-
-        # Logging
         logging.info(f"Response: {response}")
 
-        # Send response string back to the user
-        twilio.send(phone_number, response)
+        # Only send via Twilio if use_twilio is True
+        if use_twilio:
+            twilio.send(phone_number, response)
+            logging.info("Response sent via Twilio")
+        else:
+            logging.info("Skipping Twilio send (use_twilio=false)")
 
         return str(response)
 
     except Exception as e:
-        twilio.send(phone_number, f"""🚨 Uhh Ohh, looks like there was an error: {str(e)} """)
+        error_message = f"""🚨 Uhh Ohh, looks like there was an error: {str(e)} """
+        logging.error(f"Error occurred: {error_message}")
+
+        if use_twilio:
+            twilio.send(phone_number, error_message)
+
+        return error_message
+
 
 if __name__ == '__main__':
     app.run(debug=True)
