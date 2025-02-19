@@ -9,10 +9,11 @@ class EmailService:
         load_dotenv()
         self.smtp_server = "smtp.zoho.eu"
         self.smtp_port = 465
-        self.email = os.getenv("EMAIL")
-        self.password = os.getenv("PASSWORD")
+        self.email = os.getenv("SMTP_EMAIL")
+        self.password = os.getenv("SMTP_PASSWORD")
 
     def send_email(self, recipient_email, subject, body):
+        global server
         msg = MIMEMultipart()
         msg["From"] = self.email
         msg["To"] = recipient_email
@@ -25,7 +26,7 @@ class EmailService:
             server.sendmail(self.email, recipient_email, msg.as_string())
 
         except Exception as e:
-            raise Exception("Error sending verification code")
+            raise Exception(f"Error sending email: {str(e)}")
         finally:
             server.quit()
 

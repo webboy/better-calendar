@@ -1,236 +1,57 @@
 [
     {
-        "id": "1739956200",
-        "name": "Python Basics",
-        "description": "Introduction to Python: Variables, Data Types, and Basic Operations",
-        "start_date": "19.02.2025",
-        "start_time": "10:00",
-        "end_date": "19.02.2025",
-        "end_time": "11:30"
-    },
-    {
-        "id": "1739967000",
-        "name": "Control Flow",
-        "description": "If statements, Loops, and Basic Program Structure",
-        "start_date": "19.02.2025",
-        "start_time": "13:00",
-        "end_date": "19.02.2025",
-        "end_time": "14:30"
-    },
-    {
-        "id": "1739967001",
-        "name": "Evening session",
-        "description": "Long lasting evening event",
-        "start_date": "19.02.2025",
-        "start_time": "19:00",
-        "end_date": "19.02.2025",
-        "end_time": "23:30"
-    },
-    {
-        "id": "049415b6-53e7-425b-b8e2-9cab31804d11",
+        "id": "79d78d41-8c63-4864-b39c-9daf3c9b3073",
         "name": "30 Minute Meeting",
         "description": "No description provided",
         "start_date": "20.02.2025",
         "start_time": "09:00",
         "end_date": "20.02.2025",
-        "end_time": "09:30"
+        "end_time": "09:30",
+        "source": "calendly",
+        "source_id": "049415b6-53e7-425b-b8e2-9cab31804d11"
     },
     {
-        "id": "1740042600",
-        "name": "Functions & Methods",
-        "description": "Writing Functions, Parameters, Return Values, and Scope",
+        "id": "cf330bed-161e-4acf-b5fb-b8f2fcda440f",
+        "name": "Test Meeting",
+        "description": "No description provided",
         "start_date": "20.02.2025",
         "start_time": "10:00",
         "end_date": "20.02.2025",
-        "end_time": "11:30"
+        "end_time": "10:15",
+        "source": "calendly",
+        "source_id": "86463bc1-a76c-418d-8f97-48ceb4e6cc01"
     },
     {
-        "id": "1740053400",
-        "name": "Data Structures",
-        "description": "Lists, Dictionaries, Sets, and Their Methods",
-        "start_date": "20.02.2025",
-        "start_time": "13:00",
-        "end_date": "20.02.2025",
-        "end_time": "14:30"
-    },
-    {
-        "id": "jraliuqjhtckd4jb55e16odpdc",
+        "id": "641aebae-328f-49df-82f0-5c64a78d5827",
         "name": "iDesign Labs and Nemanja Milenkovic",
         "description": "Event Name: Test Meeting\n\nLocation: Am Bahnhof Tierpark 30\n\nNeed to make changes to this event?\nCancel: https://calendly.com/cancellations/44ffb8e2-689a-434a-aef5-75085eb9d169\nReschedule: https://calendly.com/reschedulings/44ffb8e2-689a-434a-aef5-75085eb9d169\n\nPowered by Calendly.com\n",
         "start_date": "20.02.2025",
         "start_time": "17:30",
         "end_date": "20.02.2025",
-        "end_time": "17:45"
+        "end_time": "17:45",
+        "source": "google",
+        "source_id": "jraliuqjhtckd4jb55e16odpdc"
     },
     {
-        "id": "1740129000",
-        "name": "Object-Oriented Programming",
-        "description": "Classes, Objects, Inheritance, and Polymorphism",
-        "start_date": "21.02.2025",
-        "start_time": "10:00",
-        "end_date": "21.02.2025",
-        "end_time": "11:30"
-    },
-    {
-        "id": "1740139800",
-        "name": "Error Handling",
-        "description": "Try-Except Blocks, Raising Exceptions, and Debugging",
-        "start_date": "21.02.2025",
-        "start_time": "13:00",
-        "end_date": "21.02.2025",
-        "end_time": "14:30"
-    },
-    {
-        "id": "68iph18g119jfuuiks1qveir7k",
+        "id": "ce02a3ef-aa37-4dc9-8ffb-4227032010d7",
         "name": "Some random Friday event",
         "description": "No description provided",
         "start_date": "21.02.2025",
         "start_time": "16:00",
         "end_date": "21.02.2025",
-        "end_time": "17:00"
+        "end_time": "17:00",
+        "source": "google",
+        "source_id": "68iph18g119jfuuiks1qveir7k"
     },
     {
-        "id": "1740215400",
-        "name": "File Operations",
-        "description": "Reading and Writing Files, Working with JSON and CSV",
-        "start_date": "22.02.2025",
-        "start_time": "10:00",
-        "end_date": "22.02.2025",
-        "end_time": "11:30"
-    },
-    {
-        "id": "1740226200",
-        "name": "Advanced Python Features",
-        "description": "List Comprehensions, Generators, and Decorators",
-        "start_date": "22.02.2025",
-        "start_time": "13:00",
-        "end_date": "22.02.2025",
-        "end_time": "14:30"
-    },
-    {
-        "id": "1740301800",
-        "name": "Project Workshop",
-        "description": "Practical Project Implementation and Code Review",
-        "start_date": "23.02.2025",
-        "start_time": "10:00",
-        "end_date": "23.02.2025",
-        "end_time": "12:00"
-    },
-    {
-        "id": "1740398400",
-        "name": "1:1 Mentor Meeting - Career Goals",
-        "description": "Personal mentoring session with Sarah to discuss career path and goals",
-        "start_date": "24.02.2025",
-        "start_time": "13:00",
-        "end_date": "24.02.2025",
-        "end_time": "14:00"
-    },
-    {
-        "id": "24vljn1ja8i1ohr5oo07qvivdp_20250225T150000Z",
+        "id": "29670253-6e8a-4fe7-bf0a-3f3fc2eae07d",
         "name": "1:1 - Nemanja",
         "description": "Open the\u00a0<a href=\"https://app.masterschool.com/campus/calendar\" target=\"_blank\"><u><u>MS calendar</u></u></a>\u00a0and select the link from our today's meeting",
         "start_date": "25.02.2025",
         "start_time": "16:00",
         "end_date": "25.02.2025",
-        "end_time": "16:30"
-    },
-    {
-        "id": "1740647400",
-        "name": "Web Development with Flask",
-        "description": "Building Web Applications with Flask Framework",
-        "start_date": "27.02.2025",
-        "start_time": "10:00",
-        "end_date": "27.02.2025",
-        "end_time": "11:30"
-    },
-    {
-        "id": "1740658200",
-        "name": "Database Integration",
-        "description": "Working with SQLite and PostgreSQL in Python",
-        "start_date": "27.02.2025",
-        "start_time": "13:00",
-        "end_date": "27.02.2025",
-        "end_time": "14:30"
-    },
-    {
-        "id": "1740733800",
-        "name": "1:1 Code Review",
-        "description": "Personal code review session with Michael",
-        "start_date": "28.02.2025",
-        "start_time": "10:00",
-        "end_date": "28.02.2025",
-        "end_time": "11:00"
-    },
-    {
-        "id": "24vljn1ja8i1ohr5oo07qvivdp_20250304T150000Z",
-        "name": "1:1 - Nemanja",
-        "description": "Open the\u00a0<a href=\"https://app.masterschool.com/campus/calendar\" target=\"_blank\"><u><u>MS calendar</u></u></a>\u00a0and select the link from our today's meeting",
-        "start_date": "04.03.2025",
-        "start_time": "16:00",
-        "end_date": "04.03.2025",
-        "end_time": "16:30"
-    },
-    {
-        "id": "1741252200",
-        "name": "API Development",
-        "description": "RESTful API Design and Implementation",
-        "start_date": "06.03.2025",
-        "start_time": "10:00",
-        "end_date": "06.03.2025",
-        "end_time": "11:30"
-    },
-    {
-        "id": "1741338600",
-        "name": "1:1 Project Planning",
-        "description": "Project planning and architecture discussion with Lisa",
-        "start_date": "07.03.2025",
-        "start_time": "10:00",
-        "end_date": "07.03.2025",
-        "end_time": "11:00"
-    },
-    {
-        "id": "24vljn1ja8i1ohr5oo07qvivdp_20250311T150000Z",
-        "name": "1:1 - Nemanja",
-        "description": "Open the\u00a0<a href=\"https://app.masterschool.com/campus/calendar\" target=\"_blank\"><u><u>MS calendar</u></u></a>\u00a0and select the link from our today's meeting",
-        "start_date": "11.03.2025",
-        "start_time": "16:00",
-        "end_date": "11.03.2025",
-        "end_time": "16:30"
-    },
-    {
-        "id": "1742116200",
-        "name": "Testing in Python",
-        "description": "Unit Testing, Integration Testing, and Test-Driven Development",
-        "start_date": "16.03.2025",
-        "start_time": "13:00",
-        "end_date": "16.03.2025",
-        "end_time": "14:30"
-    },
-    {
-        "id": "24vljn1ja8i1ohr5oo07qvivdp_20250318T150000Z",
-        "name": "1:1 - Nemanja",
-        "description": "Open the\u00a0<a href=\"https://app.masterschool.com/campus/calendar\" target=\"_blank\"><u><u>MS calendar</u></u></a>\u00a0and select the link from our today's meeting",
-        "start_date": "18.03.2025",
-        "start_time": "16:00",
-        "end_date": "18.03.2025",
-        "end_time": "16:30"
-    },
-    {
-        "id": "1742721000",
-        "name": "1:1 Career Strategy",
-        "description": "Career development and job search strategy with David",
-        "start_date": "23.03.2025",
-        "start_time": "14:00",
-        "end_date": "23.03.2025",
-        "end_time": "15:00"
-    },
-    {
-        "id": "1743239400",
-        "name": "Advanced Project Workshop",
-        "description": "Working on Complex Python Projects and System Design",
-        "start_date": "29.03.2025",
-        "start_time": "10:00",
-        "end_date": "29.03.2025",
-        "end_time": "12:00"
+        "end_time": "16:30",
+        "source": "google",
+        "source_id": "24vljn1ja8i1ohr5oo07qvivdp_20250225T150000Z"
     }
 ]

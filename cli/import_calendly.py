@@ -1,8 +1,13 @@
 #!/usr/bin/env python3
 import argparse
 import os
+import sys
 from datetime import datetime, timedelta
 from dotenv import load_dotenv
+
+# Add the project root directory to Python path
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 from app.services.calendly_service import sync_calendly_events
 
 

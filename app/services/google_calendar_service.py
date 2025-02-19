@@ -77,13 +77,15 @@ class GoogleCalendarService:
                     end_dt = datetime.fromisoformat(end.replace('Z', '+00:00'))
 
                     event = Event(
-                        id=google_event['id'],
+                        id='',
                         name=google_event['summary'],
                         description=google_event.get('description', 'No description provided'),
                         start_date=start_dt.strftime("%d.%m.%Y"),
                         start_time=start_dt.strftime("%H:%M"),
                         end_date=end_dt.strftime("%d.%m.%Y"),
-                        end_time=end_dt.strftime("%H:%M")
+                        end_time=end_dt.strftime("%H:%M"),
+                        source="google",
+                        source_id=google_event['id']
                     )
 
                     self.event_service.add_event(event)

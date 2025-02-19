@@ -1,17 +1,34 @@
 from dataclasses import dataclass
 from datetime import datetime
 import re
+import uuid
+from typing import Literal
 
+SourceType = Literal["better-calendar", "google", "calendly"]
 
 @dataclass
 class Event:
-    id: str
+    id: str  # Will be UUID
     name: str
     description: str
     start_date: str
     start_time: str
     end_date: str
     end_time: str
+    source: SourceType
+    source_id: str
+
+    def __post_init__(self):
+        """Ensure ID is always a valid UUID"""
+        if not self.id:
+            self.id = str(uuid.uuid4())
+        try:
+            uuid.UUID(self.id)
+        except ValueError:
+            # If current ID is not a valid UUID, use it as source_id and generate new UUID
+            if not self.source_id:
+                self.source_id = self.id
+            self.id = str(uuid.uuid4())
 
     def __str__(self) -> str:
         return f"{self.name} on {self.start_date} at {self.start_time}"
@@ -56,13 +73,15 @@ class Event:
     def from_dict(cls, data: dict) -> 'Event':
         """Create an Event instance from a dictionary"""
         return cls(
-            id=data.get('id'),
+            id=data.get('id', ''),  # Empty string will trigger UUID generation
             name=data.get('name'),
             description=data.get('description'),
             start_date=data.get('start_date'),
             start_time=data.get('start_time'),
             end_date=data.get('end_date'),
-            end_time=data.get('end_time')
+            end_time=data.get('end_time'),
+            source=data.get('source',"better-calendar"),  # Default to better-calendar
+            source_id=data.get('source_id', '')
         )
 
     def to_dict(self) -> dict:
@@ -74,7 +93,9 @@ class Event:
             'start_date': self.start_date,
             'start_time': self.start_time,
             'end_date': self.end_date,
-            'end_time': self.end_time
+            'end_time': self.end_time,
+            'source': self.source,
+            'source_id': self.source_id
         }
 
     def format_detailed(self) -> str:

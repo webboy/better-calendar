@@ -58,13 +58,15 @@ class CalendlyService:
         end_time = datetime.fromisoformat(calendly_event["end_time"].replace('Z', '+00:00'))
 
         return Event(
-            id=calendly_event["uri"].split('/')[-1],
+            id='',
             name=calendly_event["name"],
             description=calendly_event.get("description", "No description provided"),
             start_date=start_time.strftime("%d.%m.%Y"),
             start_time=start_time.strftime("%H:%M"),
             end_date=end_time.strftime("%d.%m.%Y"),
-            end_time=end_time.strftime("%H:%M")
+            end_time=end_time.strftime("%H:%M"),
+            source="calendly",
+            source_id=calendly_event["uri"].split('/')[-1]
         )
 
     def sync_events(self, start_date: str, end_date: str) -> int:

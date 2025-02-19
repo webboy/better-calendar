@@ -1,6 +1,7 @@
 from typing import List, Dict
 import json
 from datetime import datetime, timedelta
+import uuid
 from app.models.event import Event
 
 
@@ -15,6 +16,13 @@ class EventService:
         try:
             with open(self.file_path, 'r') as json_file:
                 events_data = json.load(json_file)
+                # Convert existing events to include new fields
+                for event_data in events_data:
+                    if 'source' not in event_data:
+                        event_data['source'] = 'better-calendar'
+                    if 'source_id' not in event_data:
+                        event_data['source_id'] = event_data.get('id', '')
+
                 self.events = [Event.from_dict(event_data) for event_data in events_data]
                 self.events = self._sort_events(self.events)
         except (FileNotFoundError, json.JSONDecodeError):
@@ -47,25 +55,20 @@ class EventService:
 
             if time_frame == 'today':
                 return event_date.date() == now.date()
-
             elif time_frame == 'tomorrow':
                 tomorrow = now.date() + timedelta(days=1)
                 return event_date.date() == tomorrow
-
             elif time_frame == 'this-week':
                 start_of_week = now.date() - timedelta(days=now.weekday())
                 end_of_week = start_of_week + timedelta(days=6)
                 return start_of_week <= event_date.date() <= end_of_week
-
             elif time_frame == 'next-week':
                 start_of_next_week = now.date() + timedelta(days=7 - now.weekday())
                 end_of_next_week = start_of_next_week + timedelta(days=6)
                 return start_of_next_week <= event_date.date() <= end_of_next_week
-
             elif time_frame == 'this-month':
                 return (event_date.year == now.year and
                         event_date.month == now.month)
-
             elif time_frame == 'next-month':
                 if now.month == 12:
                     next_month_year = now.year + 1
@@ -75,7 +78,6 @@ class EventService:
                     next_month = now.month + 1
                 return (event_date.year == next_month_year and
                         event_date.month == next_month)
-
             return True  # 'all' timeframe
 
         filtered_events = [event for event in self.events if is_event_in_timeframe(event)]
@@ -83,6 +85,10 @@ class EventService:
 
     def add_event(self, event: Event) -> None:
         """Adds a new event to the list"""
+        # Ensure event has a UUID
+        if not event.id:
+            event.id = str(uuid.uuid4())
+
         # Check for time conflicts
         event_start = datetime.strptime(f"{event.start_date} {event.start_time}", "%d.%m.%Y %H:%M")
         event_end = datetime.strptime(f"{event.end_date} {event.end_time}", "%d.%m.%Y %H:%M")
@@ -106,6 +112,13 @@ class EventService:
         self.events.append(event)
         self.events = self._sort_events(self.events)
         self.save_events()
+
+    def get_event_by_source_id(self, source: str, source_id: str) -> Event:
+        """Gets an event by source and source_id"""
+        for event in self.events:
+            if event.source == source and event.source_id == source_id:
+                return event
+        raise ValueError("Event not found")
 
     def remove_event(self, event_id: str) -> None:
         """Removes an event by ID"""

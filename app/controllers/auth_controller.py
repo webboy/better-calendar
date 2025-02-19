@@ -1,6 +1,7 @@
 from typing import List
 from app.services.user_service import UserService
 from app.services.validation_service import ValidationService
+from app.services.email_service import EmailService
 
 
 class AuthController:
@@ -8,6 +9,7 @@ class AuthController:
     def __init__(self):
         self.user_service = UserService()
         self.validation_service = ValidationService()
+        self.email_service = EmailService()
 
     def register(self, args: List[str], wa_id: str, phone_number: str) -> str:
         email = args[0]
@@ -28,15 +30,14 @@ Example: student@masterschool.com"""
         self.user_service.set_validation_code(email, code)
 
         # Send the code to the user via email
+        self.email_service.send_email(user.email,'Better Calendar Verification Code',f'Your verification code is: {code}')
+
         return f"""👋 Hello {user.first_name}!
 
 📧 We've sent a verification code to:
    {email}
-
-🔐 Your code: {code}
-
 To complete registration, use:
-!validate {email} {code}"""
+!validate {email} <code>"""
 
     def validate(self, args: List[str], wa_id: str, phone_number: str) -> str:
         email = args[0]
