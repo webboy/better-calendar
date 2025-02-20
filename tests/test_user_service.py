@@ -1,9 +1,15 @@
+import sys
+import os
 import pytest
+
+# Add the project root directory to Python path
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 from app.services.user_service import UserService, User
 
 @pytest.fixture()
 def user_service():
-    return UserService('package.json')
+    return UserService('tests\\package.json')
 
 
 def test_get_user_by_email_invalid(user_service):
