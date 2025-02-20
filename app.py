@@ -132,6 +132,9 @@ def verify():
     # Log verification attempt
     logging.info(f"Verification attempt for email: {email}")
 
+    #reload users
+    user_service.load_users_from_json()
+
     try:
         # Validate email format
         if not validation_service.validate_email(email):
@@ -151,6 +154,7 @@ def verify():
             )
 
         if user.validation_code != code:
+            logging.info(f"Invalid verification code for email: {email} (expected: {user.validation_code}, actual: {code})")
             return render_template_string(
                 VERIFY_TEMPLATE,
                 success=False,
