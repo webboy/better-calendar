@@ -1,15 +1,78 @@
 from typing import List
+import os
+from urllib.parse import quote
 from app.services.user_service import UserService
 from app.services.validation_service import ValidationService
 from app.services.email_service import EmailService
+from dotenv import load_dotenv
 
 
 class AuthController:
-
     def __init__(self):
+        load_dotenv()
         self.user_service = UserService()
         self.validation_service = ValidationService()
         self.email_service = EmailService()
+        self.base_url = os.getenv('BASE_URL', 'http://localhost:3000')
+
+    def _create_verification_email(self, user_name: str, email: str, code: str) -> tuple[str, str]:
+        """
+        Creates the email content for verification in both plain text and HTML formats
+
+        Returns:
+            tuple: (plain_text_content, html_content)
+        """
+        verification_link = f"{self.base_url}/verify?email={quote(email)}&code={code}"
+
+        # Plain text version
+        plain_text = f"""Hello {user_name}!
+
+Thank you for using Better Calendar! To complete your registration, please enter this verification code in WhatsApp:
+
+{code}
+
+Or click this link to verify your email:
+{verification_link}
+
+If you didn't request this verification, please ignore this email.
+
+Best regards,
+Better Calendar Team"""
+
+        # HTML version
+        html_content = f"""
+<!DOCTYPE html>
+<html>
+<body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px;">
+    <h2 style="color: #2c3e50;">Hello {user_name}!</h2>
+
+    <p>Thank you for using Better Calendar! To complete your registration, please use the verification code below:</p>
+
+    <div style="background-color: #f8f9fa; padding: 15px; border-radius: 5px; margin: 20px 0; text-align: center;">
+        <h1 style="color: #2c3e50; font-size: 32px; letter-spacing: 5px; margin: 0;">{code}</h1>
+    </div>
+
+    <p>Or click this button to verify your email:</p>
+
+    <div style="text-align: center; margin: 25px 0;">
+        <a href="{verification_link}" 
+           style="background-color: #3498db; color: white; padding: 12px 25px; text-decoration: none; border-radius: 5px; font-weight: bold;">
+           Verify Email
+        </a>
+    </div>
+
+    <p style="color: #666; font-size: 14px;">If you didn't request this verification, please ignore this email.</p>
+
+    <hr style="border: none; border-top: 1px solid #eee; margin: 20px 0;">
+
+    <p style="color: #666; font-size: 14px;">
+        Best regards,<br>
+        Better Calendar Team
+    </p>
+</body>
+</html>"""
+
+        return plain_text, html_content
 
     def register(self, args: List[str], wa_id: str, phone_number: str) -> str:
         email = args[0]
@@ -29,15 +92,29 @@ Example: student@masterschool.com"""
         # Save the validation code to the DB
         self.user_service.set_validation_code(email, code)
 
-        # Send the code to the user via email
-        self.email_service.send_email(user.email,'Better Calendar Verification Code',f'Your verification code is: {code}')
+        # Create and send verification email
+        plain_text, html_content = self._create_verification_email(
+            user_name=user.first_name,
+            email=email,
+            code=code
+        )
+
+        self.email_service.send_email(
+            recipient_email=user.email,
+            subject='Verify Your Better Calendar Account',
+            body=plain_text,
+            html_body=html_content
+        )
 
         return f"""👋 Hello {user.first_name}!
 
 📧 We've sent a verification code to:
    {email}
-To complete registration, use:
-!validate {email} <code>"""
+
+You can either:
+1. Click the verification link in the email
+2. Use this command:
+   !validate {email} <code>"""
 
     def validate(self, args: List[str], wa_id: str, phone_number: str) -> str:
         email = args[0]

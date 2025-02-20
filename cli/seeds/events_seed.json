@@ -1,222 +1,122 @@
 [
     {
-        "id": "79d78d41-8c63-4864-b39c-9daf3c9b3073",
-        "name": "30 Minute Meeting",
-        "description": "No description provided",
-        "start_date": "20.02.2025",
-        "start_time": "09:00",
-        "end_date": "20.02.2025",
-        "end_time": "09:30",
-        "source": "calendly",
-        "source_id": "049415b6-53e7-425b-b8e2-9cab31804d11"
-    },
-    {
-        "id": "cf330bed-161e-4acf-b5fb-b8f2fcda440f",
-        "name": "Test Meeting",
-        "description": "No description provided",
-        "start_date": "20.02.2025",
-        "start_time": "10:00",
-        "end_date": "20.02.2025",
-        "end_time": "10:15",
-        "source": "calendly",
-        "source_id": "86463bc1-a76c-418d-8f97-48ceb4e6cc01"
-    },
-    {
-        "id": "641aebae-328f-49df-82f0-5c64a78d5827",
-        "name": "iDesign Labs and Nemanja Milenkovic",
-        "description": "Event Name: Test Meeting\n\nLocation: Am Bahnhof Tierpark 30\n\nNeed to make changes to this event?\nCancel: https://calendly.com/cancellations/44ffb8e2-689a-434a-aef5-75085eb9d169\nReschedule: https://calendly.com/reschedulings/44ffb8e2-689a-434a-aef5-75085eb9d169\n\nPowered by Calendly.com\n",
-        "start_date": "20.02.2025",
-        "start_time": "17:30",
-        "end_date": "20.02.2025",
-        "end_time": "17:45",
-        "source": "google",
-        "source_id": "jraliuqjhtckd4jb55e16odpdc"
-    },
-    {
-        "id": "ce02a3ef-aa37-4dc9-8ffb-4227032010d7",
-        "name": "Some random Friday event",
-        "description": "No description provided",
-        "start_date": "21.02.2025",
-        "start_time": "16:00",
-        "end_date": "21.02.2025",
-        "end_time": "17:00",
-        "source": "google",
-        "source_id": "68iph18g119jfuuiks1qveir7k"
-    },
-    {
-        "id": "29670253-6e8a-4fe7-bf0a-3f3fc2eae07d",
-        "name": "1:1 - Nemanja",
-        "description": "Open the\u00a0<a href=\"https://app.masterschool.com/campus/calendar\" target=\"_blank\"><u><u>MS calendar</u></u></a>\u00a0and select the link from our today's meeting",
-        "start_date": "25.02.2025",
-        "start_time": "16:00",
-        "end_date": "25.02.2025",
-        "end_time": "16:30",
-        "source": "google",
-        "source_id": "24vljn1ja8i1ohr5oo07qvivdp_20250225T150000Z"
-    },
-    {
-        "id": "23859d32-a692-4dbe-a253-d0e5c8d094e1",
         "name": "Python Fundamentals - Variables and Data Types",
         "description": "Introduction to Python basics: variables, data types, operators, and basic syntax. We'll cover string manipulation, numbers, booleans, and type conversion.",
         "start_date": "26.02.2025",
         "start_time": "10:00",
         "end_date": "26.02.2025",
-        "end_time": "11:30",
-        "source": "better-calendar",
-        "source_id": ""
+        "end_time": "11:30"
     },
     {
-        "id": "e8aa736f-732c-45e2-bc61-24e87b5a2fed",
         "name": "1:1 Learning Path Discussion with Sarah",
         "description": "Personal mentoring session to discuss your learning progress and adjust the curriculum based on your goals.",
         "start_date": "26.02.2025",
         "start_time": "13:00",
         "end_date": "26.02.2025",
-        "end_time": "14:00",
-        "source": "better-calendar",
-        "source_id": ""
+        "end_time": "14:00"
     },
     {
-        "id": "39368312-2870-4743-98c0-f770153e2c31",
         "name": "Control Flow and Functions",
         "description": "Deep dive into Python control structures: if statements, loops, and function definitions. Learn about parameters, return values, and scope.",
         "start_date": "27.02.2025",
         "start_time": "10:00",
         "end_date": "27.02.2025",
-        "end_time": "11:30",
-        "source": "better-calendar",
-        "source_id": ""
+        "end_time": "11:30"
     },
     {
-        "id": "cfa7df09-dae1-4ca3-b09f-7584a445e6dc",
         "name": "Workshop: Building a Command Line Tool",
         "description": "Hands-on workshop where we'll build a practical command-line tool using Python. Learn about argparse, file handling, and best practices.",
         "start_date": "27.02.2025",
         "start_time": "14:00",
         "end_date": "27.02.2025",
-        "end_time": "16:00",
-        "source": "better-calendar",
-        "source_id": ""
+        "end_time": "16:00"
     },
     {
-        "id": "295d19f6-35a4-4f65-b060-54657e2c5a18",
         "name": "Data Structures Deep Dive",
         "description": "Comprehensive look at Python's core data structures: lists, tuples, dictionaries, and sets. Understanding when to use each type.",
         "start_date": "28.02.2025",
         "start_time": "10:00",
         "end_date": "28.02.2025",
-        "end_time": "11:30",
-        "source": "better-calendar",
-        "source_id": ""
+        "end_time": "11:30"
     },
     {
-        "id": "79a5bf69-febb-43d4-a6f8-bc864f906d0a",
         "name": "1:1 Code Review with Michael",
         "description": "Individual code review session focusing on your recent assignments and projects. Get personalized feedback and improvement suggestions.",
         "start_date": "28.02.2025",
         "start_time": "13:00",
         "end_date": "28.02.2025",
-        "end_time": "14:00",
-        "source": "better-calendar",
-        "source_id": ""
+        "end_time": "14:00"
     },
     {
-        "id": "eed60aab-0c08-4f08-bfec-7e47af7bdea6",
         "name": "Object-Oriented Programming Basics",
         "description": "Introduction to OOP concepts in Python: classes, objects, inheritance, and polymorphism. Learn how to structure your code using object-oriented principles.",
         "start_date": "01.03.2025",
         "start_time": "10:00",
         "end_date": "01.03.2025",
-        "end_time": "11:30",
-        "source": "better-calendar",
-        "source_id": ""
+        "end_time": "11:30"
     },
     {
-        "id": "be45c1d4-035a-4206-9029-65d3a7309f68",
         "name": "Workshop: Testing in Python",
         "description": "Practical workshop on writing tests in Python using pytest. Cover unit testing, fixtures, and test-driven development principles.",
         "start_date": "01.03.2025",
         "start_time": "14:00",
         "end_date": "01.03.2025",
-        "end_time": "16:00",
-        "source": "better-calendar",
-        "source_id": ""
+        "end_time": "16:00"
     },
     {
-        "id": "1c2e333f-073f-4948-ba4f-de00f7c9d82e",
         "name": "1:1 Career Strategy with Lisa",
         "description": "Career development session focusing on your professional goals, portfolio development, and job search strategy.",
         "start_date": "04.03.2025",
         "start_time": "13:00",
         "end_date": "04.03.2025",
-        "end_time": "14:00",
-        "source": "better-calendar",
-        "source_id": ""
+        "end_time": "14:00"
     },
     {
-        "id": "12692b2f-51be-42c6-906b-6b256b4fb16e",
         "name": "Web Development with Flask",
         "description": "Introduction to web development using Flask framework. Learn about routes, templates, and handling HTTP requests.",
         "start_date": "05.03.2025",
         "start_time": "10:00",
         "end_date": "05.03.2025",
-        "end_time": "11:30",
-        "source": "better-calendar",
-        "source_id": ""
+        "end_time": "11:30"
     },
     {
-        "id": "3240c4e6-3730-45aa-b05e-2ef16f93116e",
         "name": "Workshop: Building REST APIs",
         "description": "Hands-on session building RESTful APIs with Flask. Cover API design, authentication, and best practices.",
         "start_date": "05.03.2025",
         "start_time": "14:00",
         "end_date": "05.03.2025",
-        "end_time": "16:00",
-        "source": "better-calendar",
-        "source_id": ""
+        "end_time": "16:00"
     },
     {
-        "id": "18b54452-4701-4fca-bea1-6bf6808be0c1",
         "name": "Database Integration with SQLAlchemy",
         "description": "Learn how to work with databases in Python using SQLAlchemy ORM. Cover database design, queries, and relationships.",
         "start_date": "06.03.2025",
         "start_time": "10:00",
         "end_date": "06.03.2025",
-        "end_time": "11:30",
-        "source": "better-calendar",
-        "source_id": ""
+        "end_time": "11:30"
     },
     {
-        "id": "964322ff-da21-4653-bf04-03ab141a254c",
         "name": "1:1 Project Planning with David",
         "description": "Discussion about your capstone project. Review architecture, requirements, and implementation strategy.",
         "start_date": "06.03.2025",
         "start_time": "13:00",
         "end_date": "06.03.2025",
-        "end_time": "14:00",
-        "source": "better-calendar",
-        "source_id": ""
+        "end_time": "14:00"
     },
     {
-        "id": "f2aed33d-28d9-4942-b2e8-eb5a2d3cdf0b",
         "name": "Advanced Python Features",
         "description": "Deep dive into advanced Python features: decorators, generators, context managers, and metaclasses.",
         "start_date": "07.03.2025",
         "start_time": "10:00",
         "end_date": "07.03.2025",
-        "end_time": "11:30",
-        "source": "better-calendar",
-        "source_id": ""
+        "end_time": "11:30"
     },
     {
-        "id": "5c6c7de0-aa7a-4792-8451-e1e94ba67aab",
         "name": "Workshop: Docker for Python Applications",
         "description": "Learn how to containerize Python applications using Docker. Cover Docker basics, docker-compose, and deployment strategies.",
         "start_date": "07.03.2025",
         "start_time": "14:00",
         "end_date": "07.03.2025",
-        "end_time": "16:00",
-        "source": "better-calendar",
-        "source_id": ""
+        "end_time": "16:00"
     }
 ]
