@@ -1,4 +1,4 @@
-# Better Calendar
+# What's Academy - Better Calendar
 
 A comprehensive calendar management system designed for Masterschool students, integrating multiple calendar sources into a unified platform with WhatsApp notifications.
 
