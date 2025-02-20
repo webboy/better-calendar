@@ -31,7 +31,7 @@ VERIFY_TEMPLATE = """
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Better Calendar - Email Verification</title>
+    <title>What's Academy Better Calendar - Email Verification</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
         body {
